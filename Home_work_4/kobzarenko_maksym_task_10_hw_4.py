@@ -55,12 +55,16 @@ while True:
                 continue
 
     # Если пользователь выбрал "2" вариант
-    # elif option == 2:
-    #     # Просим пользователя ввести координаты (x=2;y=2). Значения вводим ТОЛЬКО через числа разделенные ";"
-    #     coordinates_2 = list(map(int, (input("Введите x и y в формате x=2;y=2: ").split(';'))))
-    #     if x[c]
-    #
-    #
+    elif option == 2:
+        # Просим пользователя ввести координаты (x=2;y=2). Значения вводим ТОЛЬКО через числа разделенные ";"
+        coordinates_2 = list(map(int, (input("Введите x и y в формате x=2;y=2: ").split(';'))))
+        if massif[coordinates_2[0]] [coordinates_2[1]] == ' ':
+            print("Пустая ячейка")
+            continue
+        else:
+            print(massif[coordinates_2[0]] [coordinates_2[1]])
+
+
     # elif option == 3:
     #     print()
     # elif option == 4:
