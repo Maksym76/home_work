@@ -52,7 +52,7 @@ while True:
                 print('Запись сделана!')
 
             else:
-                break
+                continue
 
     # Если пользователь выбрал "2" вариант
     # elif option == 2:
