@@ -65,31 +65,20 @@ while True:
             print(massif[coordinates_2[0]] [coordinates_2[1]])
 
 
-    # elif option == 3:
-    #     print()
+    elif option == 3:
+
+        for i in range(4, -1, -1): # Отсчет строки (у) у нас идет с низу в верх
+            for j in range(5): # Отсчет столбцов (х) идет с лева на право
+                print(massif[i][j], end='|')  # разделяем наши ячейки массива знаком "|"
+            print()
+
     # elif option == 4:
     #     print()
     # elif option == 0:
     #     print()
 
     # print(massif)
-    for i in range(4, -1, -1): # Строка
-        for j in range(5): # Столбец
-            print(massif[i][j], end='|')
-        print()
-    #
-
-
-
-
-
-
-
-
-
-
-    # for i in range(x3_1[0]):
-    #     for j in range(x3_1[1]):
-    #         if x[i][j] == ' ':
-    #             x[i][j].replace(' ', str(x3_1[2]))
-
+    # for i in range(4, -1, -1): # Строка
+    #     for j in range(5): # Столбец
+    #         print(massif[i][j], end='|')
+    #     print()
