@@ -11,4 +11,4 @@ def season(number_month):
          print('Autumn season')
 
 
-print(season(6))
+print(season(12))
