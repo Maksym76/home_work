@@ -14,4 +14,3 @@ def max_number_from_three_arg(numbre_1: int, number_2: int, number_3: int):
 
 
 print(max_number_from_three_arg(4, 5, 9))
-
