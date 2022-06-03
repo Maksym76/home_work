@@ -31,7 +31,8 @@ print(round_list_my_1)
 
 # Премир декораторов
 
-ukrainian_namber: dict = {"Oleg": "0932566478", 'Roman': '0986541298', 'Oksana': '+380965481237'} # Пример
+ukrainian_namber: dict = {"Oleg": "0932566478", 'Roman': '0986541298', 'Oksana': '+380965481237'}  # Пример
+
 
 #  Этот декоратор выводит список украинских операторов и их код на который они начинаються
 def decorator_operators_ukrainian_number(func):
@@ -39,10 +40,13 @@ def decorator_operators_ukrainian_number(func):
         print("Оператор Life - +38 (093), (063)", "Оператор Kievstar - +38 (097), (096) ", sep='\n')
         numbers = func(*args, **kwargs)
         return numbers
+
     return wrapper
 
+
 @decorator_operators_ukrainian_number
-# Это функция дописывает мобильный код Украины(+38) к номеру телефона если в нем не указан код страны
+# Это функция дописывает мобильный код Украины(+38) к номеру телефона если в нем не указан код страны. За аргумент берет
+# словарь
 def cod_ukrainian_number(dictionary):
     for name, number in dictionary.items():
         if '+38' not in number:
@@ -50,8 +54,6 @@ def cod_ukrainian_number(dictionary):
         else:
             dictionary[name] = number
     return dictionary
-
-
 
 
 print(cod_ukrainian_number(ukrainian_namber))
