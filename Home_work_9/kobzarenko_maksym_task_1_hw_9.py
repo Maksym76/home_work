@@ -44,7 +44,7 @@ def decorator_operators_ukrainian_number(func):
     return wrapper
 
 
-@decorator_operators_ukrainian_number
+@decorator_operators_ukrainian_number # Декорируем функцию
 # Это функция дописывает мобильный код Украины(+38) к номеру телефона если в нем не указан код страны. За аргумент берет
 # словарь
 def cod_ukrainian_number(dictionary):
