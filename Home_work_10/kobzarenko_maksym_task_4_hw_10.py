@@ -33,4 +33,3 @@ func(5, 3, 2, 5)
 func(5, 3, 2, 5)
 func(5, 5, 5.5)
 print(dict_memory)
-
