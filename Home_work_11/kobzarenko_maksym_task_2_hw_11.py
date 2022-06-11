@@ -17,7 +17,7 @@ def func_division(x: int, y: int):
 # следуя коду. Блок "else" используеться только если есть блок "except"
 def check_texst():
     try:
-        my_password = input('Введите текст: ')  # Нажать ctrl-d чтобы вызвать ошибку "EOFError"
+        my_password: str = input('Введите текст: ')  # Нажать ctrl-d чтобы вызвать ошибку "EOFError"
 
     except EOFError as error:
         print(f"Не надо было нажимать ctrl-d вы вызвали: {error}")
@@ -26,7 +26,7 @@ def check_texst():
         print('Текст будет виден если в блоке "try" не будет ошибок')
 
     print('Эта запись будет видна если даже будет ошибка')
-
+    return my_password
 
 check_texst()
 
