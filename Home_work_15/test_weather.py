@@ -1,7 +1,7 @@
 from unittest import TestCase, main
 
 
-from get_weather import information_about_weather, pressure, temperature
+from get_weather import pressure, temperature
 
 
 class TestWeather(TestCase):
