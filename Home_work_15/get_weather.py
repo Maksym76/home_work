@@ -27,19 +27,19 @@ def information_about_weather():
 
 def pressure():
     weather_pressure = r_data['main']
-    current_pressure = weather_pressure['pressure']
+    current_pressure = round(weather_pressure['pressure'] - 273.15)
     return current_pressure
 
 
 def temperature():
     weather_temperature = r_data['main']
-    current_temperature = weather_temperature['temperature']
+    current_temperature = weather_temperature['temp']
     return current_temperature
 
 
 if __name__ == '__main__':
     print(information_about_weather())
-
+    print(type(pressure()))
 """
 1. создать функцию(ии) для определения погоды по данным(Город).
 2. Вынести некоторые данные в константу(ы).
