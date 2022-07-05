@@ -1,11 +1,9 @@
 import unittest
 
-from unittest import TestCase, main
-
 from get_weather import pressure, temperature
 
 
-class TestWeather(TestCase):
+class TestWeather(unittest.TestCase):
 
     @unittest.skipIf(pressure() > 1013, 'pressure biggest then 1013 hPa')
     def test_lowe_pressure(self):
@@ -25,4 +23,4 @@ class TestWeather(TestCase):
 
 
 if __name__ == '__mani__':
-    main()
+    unittest.main()

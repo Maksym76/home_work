@@ -1,23 +1,26 @@
-import requests  # pip install requests
+import requests
 
-base_url = 'http://api.openweathermap.org/data/2.5/weather?'
+base_url: str = 'http://api.openweathermap.org/data/2.5/weather?'
 
-api_key = 'd82759ebf4a4a5ed987117c4027b9dfa'  # if api_key not works, generate yours on website
+api_key: str = 'd82759ebf4a4a5ed987117c4027b9dfa'
 
-city_name = input('please fill up your city: ')
+city_name: str = input('please fill up your city: ')
 
-complete_url = base_url + "appid=" + api_key + "&q=" + city_name
-response = requests.get(complete_url)
-r_data = response.json()
+complete_url: str = base_url + "appid=" + api_key + "&q=" + city_name  # generating URL in which will be take information about weather
+response = requests.get(complete_url)  # send a request to the complete URL and get response
+r_data: dict = response.json()  # writing the response to the dictionary
 
 
 def information_about_weather():
+    """Showing all information about weather in the city"""
+
     if r_data["cod"] != "404":
-        weather_data = r_data['main']
-        current_t = round(weather_data['temp'] - 273.15)
-        current_p = weather_data["pressure"]
-        weather_description = r_data["weather"]
-        weather_description = weather_description[0]["description"]
+        weather_data: dict = r_data['main']
+        current_t: int = round(weather_data['temp'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
+
+        current_p: int = weather_data["pressure"]
+        weather_description: dict = r_data["weather"]
+        weather_description: str = weather_description[0]["description"]
         return f"Weather's data in {city_name.capitalize()}: current temperature {current_t} С, current pressure " \
                f"{current_p} hPa, {weather_description}"
 
@@ -26,14 +29,19 @@ def information_about_weather():
 
 
 def pressure():
-    weather_pressure = r_data['main']
-    current_pressure = round(weather_pressure['pressure'] - 273.15)
+    """Showing what pressure in the city"""
+
+    weather_pressure: dict = r_data['main']
+    current_pressure: int = round(weather_pressure['pressure'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
+
     return current_pressure
 
 
 def temperature():
-    weather_temperature = r_data['main']
-    current_temperature = weather_temperature['temp']
+    """Showing what temperature in the city"""
+
+    weather_temperature: dict = r_data['main']
+    current_temperature: int = weather_temperature['temp']
     return current_temperature
 
 
