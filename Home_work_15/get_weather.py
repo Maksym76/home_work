@@ -32,7 +32,7 @@ def pressure():
     """Showing what pressure in the city"""
 
     weather_pressure: dict = r_data['main']
-    current_pressure: int = round(weather_pressure['pressure'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
+    current_pressure: int = weather_pressure['pressure']
 
     return current_pressure
 
@@ -41,7 +41,7 @@ def temperature():
     """Showing what temperature in the city"""
 
     weather_temperature: dict = r_data['main']
-    current_temperature: int = weather_temperature['temp']
+    current_temperature: int = round(weather_temperature['temp'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
     return current_temperature
 
 
