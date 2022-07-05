@@ -39,7 +39,7 @@ def temperature():
 
 if __name__ == '__main__':
     print(information_about_weather())
-    print(type(pressure()))
+
 """
 1. создать функцию(ии) для определения погоды по данным(Город).
 2. Вынести некоторые данные в константу(ы).
