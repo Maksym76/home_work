@@ -15,10 +15,10 @@ def information_about_weather():
     """Showing all information about weather in the city"""
 
     if r_data["cod"] != "404":
-        weather_data: dict = r_data['main']
-        current_t: int = round(weather_data['temp'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
+        weather_data1: dict = r_data['main']
+        current_t: int = round(weather_data1['temp'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
 
-        current_p: int = weather_data["pressure"]
+        current_p: int = weather_data1["pressure"]
         weather_description: dict = r_data["weather"]
         weather_description: str = weather_description[0]["description"]
         return f"Weather's data in {city_name.capitalize()}: current temperature {current_t} С, current pressure " \
@@ -31,8 +31,8 @@ def information_about_weather():
 def pressure():
     """Showing what pressure in the city"""
 
-    weather_pressure: dict = r_data['main']
-    current_pressure: int = weather_pressure['pressure']
+    weather_data2: dict = r_data['main']
+    current_pressure: int = weather_data2['pressure']
 
     return current_pressure
 
@@ -40,8 +40,8 @@ def pressure():
 def temperature():
     """Showing what temperature in the city"""
 
-    weather_temperature: dict = r_data['main']
-    current_temperature: int = round(weather_temperature['temp'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
+    weather_data3: dict = r_data['main']
+    current_temperature: int = round(weather_data3['temp'] - 273.15)  # converting temperature from fahrenheit to celsius and round to integer
     return current_temperature
 
 
