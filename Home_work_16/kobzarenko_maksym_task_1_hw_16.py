@@ -56,9 +56,8 @@ while True:
 
     question_for_player = input('Repeat (Y/N)').upper()
 
-    answer = ('Y', 'N')
 
-    while question_for_player not in answer:
+    while question_for_player != 'Y' and question_for_player != 'N':
         print(f'Invalid input "{question_for_player}"')
         question_for_player = input('Repeat (Y/N)').upper()
 
