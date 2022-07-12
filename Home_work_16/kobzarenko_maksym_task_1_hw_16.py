@@ -3,7 +3,7 @@ import random
 game: tuple = ('Rock', 'Paper', 'Scissors', 'Lizard', 'Spock')
 
 while True:
-    user_choice: str = input('''Make your choice:
+    user_choice: str = input('''Write full name your choice:
     1) Rock
     2) Paper
     3) Scissors
@@ -14,36 +14,43 @@ while True:
     program_choice = random.choice(game)
     print(program_choice)
 
-    if user_choice == 'Scissors' and (program_choice == 'Lizard' or 'Paper' or 'Scissors'):
-        if program_choice == 'Scissors':
+    if user_choice == 'Scissors':
+        if program_choice == user_choice:
             print('Draw!')
-            continue
-        print('Congratulation! You win!')
+        elif program_choice == 'Lizard' or program_choice == 'Paper':
+            print("Congratulations! You win! ")
+        else:
+            print('You lose!')
 
-    elif (user_choice == 'Rock') and (program_choice == 'Lizard' or 'Scissors' or 'Rock'):
-        if program_choice == 'Rock':
+    elif user_choice == 'Rock':
+        if program_choice == user_choice:
             print('Draw!')
-            continue
-        print('Congratulation! You win!')
+        elif program_choice == 'Lizard' or program_choice == 'Scissors':
+            print("Congratulations! You win! ")
+        else:
+            print('You lose!')
 
-    elif (user_choice == 'Paper') and (program_choice == "Rock" or 'Spock' or 'Paper'):
-        if program_choice == 'Paper':
+    elif user_choice == 'Paper':
+        if program_choice == user_choice:
             print('Draw!')
-            continue
-        print('Congratulation! You win!')
+        elif program_choice == 'Rock' or program_choice == 'Spock':
+            print("Congratulations! You win!")
+        else:
+            print('You lose!')
 
-    elif (user_choice == 'Lizard') and (program_choice == "Paper" or 'Spock' or 'Lizard'):
-        if program_choice == 'Lizard':
+    elif user_choice == 'Lizard':
+        if program_choice == user_choice:
             print('Draw!')
-            continue
-        print('Congratulation! You win!')
+        elif program_choice == 'Paper' or program_choice == 'Spock':
+            print("Congratulations! You win!")
+        else:
+            print('You lose!')
 
-    elif (user_choice == 'Spock') and (program_choice == 'Scissors' or 'Rock' or 'Spock'):
-        if program_choice == 'Spock':
+
+    elif user_choice == 'Spock':
+        if program_choice == user_choice:
             print('Draw!')
-            continue
-        print('Congratulation! You win!')
-
-    else:
-        print('You lose!')
-
+        elif program_choice == 'Scissors' or program_choice == 'Rock':
+            print("Congratulations! You win!")
+        else:
+            print('You lose!')
