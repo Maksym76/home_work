@@ -3,63 +3,69 @@ import random
 game: tuple = ('Rock', 'Paper', 'Scissors', 'Lizard', 'Spock')
 
 while True:
-    user_choice: str = input('''Write full name your choice:
-    1) Rock
-    2) Paper
-    3) Scissors
-    4) Lizard
-    5) Spock 
-    ''').capitalize().lstrip().rstrip()
 
-    program_choice = random.choice(game)
+    players_choice: str = input('Your choice (rock, paper, scissors, lizard, spock)? ').capitalize().lstrip().rstrip()
 
-    if user_choice == 'Scissors':
-        if program_choice == user_choice:
-            print('Draw!')
-        elif program_choice == 'Lizard' or program_choice == 'Paper':
-            print("Congratulations! You win! ")
-        else:
-            print('You lose!')
+    computers_choice = random.choice(game)
 
-    elif user_choice == 'Rock':
-        if program_choice == user_choice:
-            print('Draw!')
-        elif program_choice == 'Lizard' or program_choice == 'Scissors':
-            print("Congratulations! You win! ")
-        else:
-            print('You lose!')
-
-    elif user_choice == 'Paper':
-        if program_choice == user_choice:
-            print('Draw!')
-        elif program_choice == 'Rock' or program_choice == 'Spock':
-            print("Congratulations! You win!")
-        else:
-            print('You lose!')
-
-    elif user_choice == 'Lizard':
-        if program_choice == user_choice:
-            print('Draw!')
-        elif program_choice == 'Paper' or program_choice == 'Spock':
-            print("Congratulations! You win!")
-        else:
-            print('You lose!')
-
-
-    elif user_choice == 'Spock':
-        if program_choice == user_choice:
-            print('Draw!')
-        elif program_choice == 'Scissors' or program_choice == 'Rock':
-            print("Congratulations! You win!")
-        else:
-            print('You lose!')
-
-    question_for_user = input('''Do you want start again (write number of answer)?
-     1) Yes
-     2) No
-     ''')
-
-    if question_for_user == '1':
+    if players_choice not in game:
+        print(f'Invalid input "{players_choice}"')
         continue
-    else:
+
+    elif players_choice == 'Scissors':
+        if computers_choice == players_choice:
+            print('Draw!')
+        elif computers_choice == 'Lizard' or computers_choice == 'Paper':
+            print("Pleyer win!")
+        else:
+            print('Computer win!')
+
+    elif players_choice == 'Rock':
+        if computers_choice == players_choice:
+            print('Draw!')
+        elif computers_choice == 'Lizard' or computers_choice == 'Scissors':
+            print("Pleyer win!")
+        else:
+            print('Computer win!')
+
+    elif players_choice == 'Paper':
+        if computers_choice == players_choice:
+            print('Draw!')
+        elif computers_choice == 'Rock' or computers_choice == 'Spock':
+            print("Pleyer win!")
+        else:
+            print('Computer win!')
+
+    elif players_choice == 'Lizard':
+        if computers_choice == players_choice:
+            print('Draw!')
+        elif computers_choice == 'Paper' or computers_choice == 'Spock':
+            print("Pleyer win!")
+        else:
+            print('Computer win!')
+
+
+    elif players_choice == 'Spock':
+        if computers_choice == players_choice:
+            print('Draw!')
+        elif computers_choice == 'Scissors' or computers_choice == 'Rock':
+            print("Pleyer win!")
+        else:
+            print('Computer win!')
+
+
+    question_for_player = input('Repeat (Y/N)').upper()
+
+    answer = ('Y', 'N')
+
+    while question_for_player not in answer:
+        print(f'Invalid input "{question_for_player}"')
+        question_for_player = input('Repeat (Y/N)').upper()
+        if question_for_player == 'Y':
+            break
+        elif question_for_player == 'N':
+            break
+    if question_for_player == 'Y':
+        continue
+    elif question_for_player == 'N':
         break
