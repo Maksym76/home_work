@@ -12,7 +12,6 @@ while True:
     ''').capitalize().lstrip().rstrip()
 
     program_choice = random.choice(game)
-    print(program_choice)
 
     if user_choice == 'Scissors':
         if program_choice == user_choice:
@@ -54,3 +53,13 @@ while True:
             print("Congratulations! You win!")
         else:
             print('You lose!')
+
+    question_for_user = input('''Do you want start again (write number of answer)?
+     1) Yes
+     2) No
+     ''')
+
+    if question_for_user == '1':
+        continue
+    else:
+        break
