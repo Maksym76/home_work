@@ -22,5 +22,5 @@ class TestWeather(unittest.TestCase):
         self.assertGreater(temperature(), 0)
 
 
-if __name__ == '__mani__':
+if __name__ == '__main__':
     unittest.main()
