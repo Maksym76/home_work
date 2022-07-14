@@ -1,5 +1,6 @@
 import requests
-import  datetime
+import datetime
+
 # currency = input('Write currency: ').upper()
 #
 # api_url = f'https://api.api-ninjas.com/v1/convertcurrency?want=UAH&have={currency}&amount=1'
@@ -23,19 +24,41 @@ import  datetime
 # # Write currency: rrrr
 # # {'error': 'Invalid currencies.'}
 
+try:
+    user_request = input("Write currency(example: 'USD') and date (yyyy.mm.dd., where: y-year, m-month, d-date. Default date = today's date): ").split(' ')
+    currencies_to_uah = ['AUD', 'CAD', 'CNY', 'HRK', 'CZK', 'DKK', 'HKD', 'HUF', 'INR', 'IDR', 'ILS', 'JPY', 'KZT', 'KRW',
+                         'MXN', 'MDL', 'NZD', 'NOK', 'RUB', 'SGD', 'ZAR', 'SEK', 'CHF', 'EGP', 'GBP', 'USD', 'BYN', 'AZN',
+                         'RON', 'TRY', 'XDR', 'BGN', 'EUR', 'PLN', 'DZD', 'BDT', 'AMD', 'DOP', 'IRR', 'IQD', 'KGS', 'LBP',
+                         'LYD', 'MYR', 'MAD', 'PKR', 'SAR', 'VND', 'THB', 'AED', 'TND', 'UZS', 'TWD', 'TMT', 'RSD', 'TJS',
+                         'GEL', 'BRL', 'XAU', 'XAG', 'XPT', 'XPD']
 
-currency = input('Write currency: ').upper()
-dat = datetime.date.today()
-data = datetime.date.strftime(dat, '%Y%m%d')
+    date_now = datetime.date.today()
+    data = datetime.date.strftime(date_now, '%Y%m%d')
+    currency = None
 
-api_url = f'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode={currency}&date={data}&json'
+    if len(user_request) < 2:
+        currency = user_request[0].upper()
 
-response = requests.get(api_url).json()
+    elif len(user_request) == 2:
+        currency = user_request[0].upper()
+        data = user_request[1].replace('.', '')
+    else:
+        print("Invalid request. \n Example: ' ")
 
-if response == list():
-    print(f'Invalid currency name: {currency}')
-else:
-    print(f'''{currency}
+    api_url = f'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode={currency}&date={data}&json'
 
-{response[0]['rate']}''')
-    print(response)
+    response = requests.get(api_url).json()
+
+    if currency not in currencies_to_uah:
+        print(f'Invalid currency name: {user_request}')
+
+    elif response == list or 'message' in response[0]:
+        print('Invalid date')
+
+    else:
+        print(f'''{currency}
+    
+    {response[0]['rate']}''')
+
+except BaseException:
+    print('System Error')
