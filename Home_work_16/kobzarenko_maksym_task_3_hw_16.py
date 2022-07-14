@@ -26,8 +26,6 @@ try:
         currency = user_request[0].upper()
         data = user_request[1].replace('.', '')
 
-
-
     api_url = f'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode={currency}&date={data}&json'
 
     response = requests.get(api_url).json()
