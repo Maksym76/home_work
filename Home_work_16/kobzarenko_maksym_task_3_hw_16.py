@@ -1,32 +1,11 @@
 import requests
+
 import datetime
 
-# currency = input('Write currency: ').upper()
-#
-# api_url = f'https://api.api-ninjas.com/v1/convertcurrency?want=UAH&have={currency}&amount=1'
-#
-# api_key = 'cEVBI1ovwpgTvN5gQyeWrw==XrhtDlSc2JvBAC43'
-#
-# response = requests.get(api_url, headers={'X-Api-Key': api_key}).json()
-#
-# if 'error' in response:
-#     print(f'Invalid currency name: {currency}')
-# else:
-#     print(f'''{currency}
-#
-# {response['new_amount']}''')
-#
-#
-# print(response)
-#
-# # {'new_amount': 29.82, 'new_currency': 'UAH', 'old_currency': 'EUR', 'old_amount': 1.0}
-#
-# # Write currency: rrrr
-# # {'error': 'Invalid currencies.'}
-
 try:
-    user_request = input('''Write currency and date (yyyy.mm.dd., where: y-year, m-month, d-date. Default date = today's date) 
-Example:'USD 2020.04.22' or 'USD' \n ''').split(' ')
+    user_request = input(
+        "Write currency and date (yyyy.mm.dd., where: y-year, m-month, d-date. Default date = today's date)"
+        "\nExample:'USD 2020.04.22' or 'USD' \n").split(' ')
 
     date_now = datetime.date.today()
     data = datetime.date.strftime(date_now, '%Y%m%d')
@@ -37,14 +16,17 @@ Example:'USD 2020.04.22' or 'USD' \n ''').split(' ')
                        'TJS', 'GEL', 'BRL', 'XAU', 'XAG', 'XPT', 'XPD']
     currency = None
 
-    if len(user_request) < 2:
+    if user_request[0] == '':
+        currency = None
+
+    elif len(user_request) == 1:
         currency = user_request[0].upper()
 
     elif len(user_request) == 2:
         currency = user_request[0].upper()
         data = user_request[1].replace('.', '')
-    else:
-        print('Invalid request')
+
+
 
     api_url = f'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode={currency}&date={data}&json'
 
@@ -54,7 +36,7 @@ Example:'USD 2020.04.22' or 'USD' \n ''').split(' ')
         print(f'Invalid currency name: {currency}')
 
     elif response == list or 'message' in response[0]:
-        print('Invalid date')
+        print(f'Invalid date {user_request[1]}')
 
     else:
         print(f'''{currency}
