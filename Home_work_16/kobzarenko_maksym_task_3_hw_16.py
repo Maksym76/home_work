@@ -13,13 +13,10 @@ try:
     data: str = datetime.date.strftime(date_now, '%Y%m%d')  # Converting date to string
     bank_currencies: list = ['AUD', 'CAD', 'CNY', 'HRK', 'CZK', 'DKK', 'HKD', 'HUF', 'INR', 'IDR', 'ILS', 'JPY', 'KZT',
                              'KRW', 'MXN', 'MDL', 'NZD', 'NOK', 'RUB', 'SGD', 'ZAR', 'SEK', 'CHF', 'EGP', 'GBP', 'USD',
-                             'BYN',
-                             'AZN', 'RON', 'TRY', 'XDR', 'BGN', 'EUR', 'PLN', 'DZD', 'BDT', 'AMD', 'DOP', 'IRR', 'IQD',
-                             'KGS',
-                             'LBP', 'LYD', 'MYR', 'MAD', 'PKR', 'SAR', 'VND', 'THB', 'AED', 'TND', 'UZS', 'TWD', 'TMT',
-                             'RSD',
-                             'TJS', 'GEL', 'BRL', 'XAU', 'XAG', 'XPT',
-                             'XPD']  # Create list with currencies which work the bank
+                             'BYN', 'AZN', 'RON', 'TRY', 'XDR', 'BGN', 'EUR', 'PLN', 'DZD', 'BDT', 'AMD', 'DOP', 'IRR',
+                             'IQD', 'KGS', 'LBP', 'LYD', 'MYR', 'MAD', 'PKR', 'SAR', 'VND', 'THB', 'AED', 'TND', 'UZS',
+                             'TWD', 'TMT', 'RSD', 'TJS', 'GEL',
+                             'BRL']  # Create list with currencies which work the bank
     currency: str = user_request[0].upper()  # Write currency which user chose
 
     if len(user_request) == 2:
