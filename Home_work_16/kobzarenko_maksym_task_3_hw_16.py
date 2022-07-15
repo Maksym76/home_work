@@ -1,4 +1,5 @@
-"""Foreign exchange rate to UAH"""
+""" National Bank of Ukraine
+Foreign exchange rate to UAH"""
 
 import requests
 
