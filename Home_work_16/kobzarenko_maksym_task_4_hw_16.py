@@ -2,73 +2,58 @@ import requests
 
 api_url: str = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'
 
-response: list = requests.get(api_url).json()  # Send a request and get response
+response: list = requests.get(api_url).json()
 
-buy_usd: float = float(response[0]['buy'])  # Price for buy dollar
-sale_usd: float = float(response[0]['sale'])  # Price for sale dollar
+buy_usd = float(response[0]['buy'])
+sale_usd = float(response[0]['sale'])
 
-available_usd: float = 25685.25  # Available USD in cashbox
-available_uah: float = 15364.36  # Available UAH in cashbox
+available_usd: float = 20000.25
+available_uah: float = 15364.36
 
 while True:
-    user_request: list = input(
-        "Write one of the commands: 'COURSE USD(UAH)', 'EXCHANGE UAH(USD) 125(amount)' or 'STOP' "
-        "for exit write : ").strip().upper().split()
+    user_request: list = input("Write one of the commands 'COURSE USD(UAH)' or 'EXCHANGE UAH(USD) (amount)'.\n"
+                               "For exit write 'STOP' : ").strip().upper().split()
 
-    command_name: str = user_request[0]
-    currency_name: str = user_request[1]
-
-    #  Check for valid command from user
-    if len(user_request) == 0 or len(user_request) > 3 or command_name not in ('COURSE', 'EXCHANGE', 'STOP') or \
-            (command_name == 'STOP' and len(user_request) > 1) or \
-            (command_name == 'COURSE' and len(user_request) == 1) or \
-            (command_name == 'EXCHANGE' and 1 <= len(user_request) < 3):
-
+    if len(user_request) == 0 or len(user_request) > 3 or user_request[0] not in ('COURSE', 'EXCHANGE', 'STOP'):
         print('INVALID COMMAND')
 
-    elif command_name == 'STOP':
+    elif user_request[0] == 'STOP':
         print('SERVICE STOPPED')
         break
 
-    elif currency_name not in ('USD', 'UAH'):
-        print(f'INVALID CURRENCY {currency_name}')
+    elif user_request[1] not in ('USD', 'UAH'):
+        print(f'INVALID CURRENCY {user_request[1]}')
 
     elif len(user_request) == 2:
 
-        if command_name == 'COURSE' and currency_name == 'USD':
+        if user_request[0] == 'COURSE' and user_request[1] == 'USD':
             print(f"RATE {sale_usd}, AVAILABLE {available_usd}")
 
-        elif command_name == 'COURSE' and currency_name == 'UAH':
+        elif user_request[0] == 'COURSE' and user_request[1] == 'UAH':
             print(f"RATE {buy_usd}, AVAILABLE {available_uah}")
-
 
     elif len(user_request) == 3:
 
-        amount_currency: str = user_request[2]
+        if user_request[0] == 'EXCHANGE' and user_request[1] == 'USD':
 
-        if not amount_currency.isdigit():
-            print('INVALID COMMAND')
+            req_balance = float(user_request[2]) * buy_usd
 
-        elif command_name == 'EXCHANGE' and currency_name == 'USD':
-
-            required_balance: float = float(amount_currency) * buy_usd
-
-            if required_balance > available_uah:
-                print(f"UNAVAILABLE, REQUIRED BALANCE UAH {required_balance}, AVAILABLE {available_uah}")
+            if req_balance > available_uah:
+                print(f"UNAVAILABLE, REQUIRED BALANCE UAH {req_balance}, AVAILABLE {available_uah}")
 
             else:
-                available_uah -= required_balance  # Update available balance UAH
+                available_uah -= req_balance
 
-                print(f"UAH {round(required_balance, 3)}, RATE {round(buy_usd, 3)}")
+                print(f"UAH {round(req_balance)}, RATE {buy_usd}")
 
-        elif command_name == 'EXCHANGE' and currency_name == 'UAH':
+        elif user_request[0] == 'EXCHANGE' and user_request[1] == 'UAH':
 
-            required_balance: float = float(amount_currency) / sale_usd
+            req_balance = float(user_request[2]) / sale_usd
 
-            if required_balance > available_usd:
-                print(f"UNAVAILABLE, REQUIRED BALANCE USD {required_balance}, AVAILABLE {available_usd}")
+            if req_balance > available_usd:
+                print(f"UNAVAILABLE, REQUIRED BALANCE USD {req_balance}, AVAILABLE {available_usd}")
 
             else:
-                available_usd -= required_balance  # Update available balance UAH
+                available_usd -= req_balance
 
-                print(f'USD {round(required_balance, 3)}, RATE {round(required_balance / float(amount_currency), 3)}')
+                print(f'USD {round(req_balance, 3)}, RATE {round(req_balance / float(user_request[2]), 3)}')
