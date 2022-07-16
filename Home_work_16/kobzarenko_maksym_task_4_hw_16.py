@@ -7,7 +7,7 @@ response: list = requests.get(api_url).json()
 buy_usd: float = float(response[0]['buy'])
 sale_usd: float = float(response[0]['sale'])
 
-available_usd: float = 20000.25
+available_usd: float = 25685.25
 available_uah: float = 15364.36
 
 while True:
@@ -15,7 +15,10 @@ while True:
                                "For exit write 'STOP' : ").strip().upper().split()
 
     if len(user_request) == 0 or len(user_request) > 3 or user_request[0] not in ('COURSE', 'EXCHANGE', 'STOP') or \
-            (user_request[0] == 'STOP' and len(user_request) > 1):
+            (user_request[0] == 'STOP' and len(user_request) > 1) or \
+            (user_request[0] == 'COURSE' and len(user_request) == 1) or \
+            (user_request[0] == 'EXCHANGE' and 1 <= len(user_request) < 3):
+
         print('INVALID COMMAND')
 
     elif user_request[0] == 'STOP':
@@ -36,9 +39,12 @@ while True:
 
     elif len(user_request) == 3:
 
-        if user_request[0] == 'EXCHANGE' and user_request[1] == 'USD':
+        if not user_request[2].isdigit():
+            print('INVALID COMMAND')
 
-            req_balance = float(user_request[2]) * buy_usd
+        elif user_request[0] == 'EXCHANGE' and user_request[1] == 'USD':
+
+            req_balance: float = float(user_request[2]) * buy_usd
 
             if req_balance > available_uah:
                 print(f"UNAVAILABLE, REQUIRED BALANCE UAH {req_balance}, AVAILABLE {available_uah}")
@@ -46,11 +52,11 @@ while True:
             else:
                 available_uah -= req_balance
 
-                print(f"UAH {round(req_balance)}, RATE {buy_usd}")
+                print(f"UAH {round(req_balance, 3)}, RATE {round(buy_usd, 3)}")
 
         elif user_request[0] == 'EXCHANGE' and user_request[1] == 'UAH':
 
-            req_balance = float(user_request[2]) / sale_usd
+            req_balance: float = float(user_request[2]) / sale_usd
 
             if req_balance > available_usd:
                 print(f"UNAVAILABLE, REQUIRED BALANCE USD {req_balance}, AVAILABLE {available_usd}")
@@ -60,4 +66,4 @@ while True:
 
                 print(f'USD {round(req_balance, 3)}, RATE {round(req_balance / float(user_request[2]), 3)}')
 
-# TODO: разобратьс с 3 аргументом что бы его проверяли состоит он из цифр или нет "elif len(user_request) == 3:"
+# TODO: разобратьс с 3 аргументом что бы его проверяли состоит он из цифр или нет "elif len(user_request) == 3:" 37 строка
