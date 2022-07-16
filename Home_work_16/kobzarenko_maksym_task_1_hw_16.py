@@ -16,7 +16,7 @@ while True:
         if computers_choice == players_choice:
             print('Draw!')
         elif computers_choice == 'Lizard' or computers_choice == 'Paper':
-            print("Pleyer win!")
+            print("Player win!")
         else:
             print('Computer win!')
 
@@ -24,7 +24,7 @@ while True:
         if computers_choice == players_choice:
             print('Draw!')
         elif computers_choice == 'Lizard' or computers_choice == 'Scissors':
-            print("Pleyer win!")
+            print("Player win!")
         else:
             print('Computer win!')
 
@@ -32,7 +32,7 @@ while True:
         if computers_choice == players_choice:
             print('Draw!')
         elif computers_choice == 'Rock' or computers_choice == 'Spock':
-            print("Pleyer win!")
+            print("Player win!")
         else:
             print('Computer win!')
 
@@ -40,7 +40,7 @@ while True:
         if computers_choice == players_choice:
             print('Draw!')
         elif computers_choice == 'Paper' or computers_choice == 'Spock':
-            print("Pleyer win!")
+            print("Player win!")
         else:
             print('Computer win!')
 
@@ -49,7 +49,7 @@ while True:
         if computers_choice == players_choice:
             print('Draw!')
         elif computers_choice == 'Scissors' or computers_choice == 'Rock':
-            print("Pleyer win!")
+            print("Player win!")
         else:
             print('Computer win!')
 
