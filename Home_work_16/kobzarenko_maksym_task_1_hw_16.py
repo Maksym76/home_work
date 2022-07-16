@@ -6,7 +6,7 @@ while True:
 
     players_choice: str = input('Your choice (rock, paper, scissors, lizard, spock)? ').capitalize().lstrip().rstrip()
 
-    computers_choice = random.choice(game)
+    computers_choice: str = random.choice(game)
 
     if players_choice not in game:
         print(f'Invalid input "{players_choice}"')
@@ -54,7 +54,7 @@ while True:
             print('Computer win!')
 
 
-    question_for_player = input('Repeat (Y/N)').upper()
+    question_for_player: str = input('Repeat (Y/N)').upper()
 
 
     while question_for_player != 'Y' and question_for_player != 'N':
