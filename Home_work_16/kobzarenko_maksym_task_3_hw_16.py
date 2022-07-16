@@ -10,7 +10,7 @@ try:
         "Write currency and date (yyyy.mm.dd., where: y-year, m-month, d-date. Default date = today's date)"
         "\nExample:'USD 2020.04.22' or 'USD' \n").split(' ')
 
-    date_now = datetime.date.today()  # Create variable with today date
+    date_now: datetime.date = datetime.date.today()  # Create variable with today date
     data: str = datetime.date.strftime(date_now, '%Y%m%d')  # Converting date to string
     bank_currencies: list = ['AUD', 'CAD', 'CNY', 'HRK', 'CZK', 'DKK', 'HKD', 'HUF', 'INR', 'IDR', 'ILS', 'JPY', 'KZT',
                              'KRW', 'MXN', 'MDL', 'NZD', 'NOK', 'RUB', 'SGD', 'ZAR', 'SEK', 'CHF', 'EGP', 'GBP', 'USD',
